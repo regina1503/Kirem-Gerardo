@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación Vaquera</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body, html { 
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background-color: #3e2723; /* Tono madera oscura */
+            font-family: 'Rye', cursive;
+            overflow: hidden;
+        }
+
+        /* --- ANIMACIONES DEL OESTE --- */
+
+        /* 1. Líneas de viento color arena */
+        .viento-contenedor {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 150; /* Por encima de las imágenes */
+            overflow: hidden;
+        }
+
+        .linea-viento {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(220, 180, 130, 0.4), transparent);
+            width: 200px;
+            opacity: 0.8;
+        }
+
+        .v1 { top: 25%; animation: soplarViento 5s linear infinite; }
+        .v2 { top: 60%; animation: soplarViento 7s linear infinite 1.5s; }
+        .v3 { top: 80%; animation: soplarViento 6s linear infinite 3s; }
+
+        @keyframes soplarViento {
+            0% { left: -250px; transform: translateY(0) skewY(-4deg); }
+            50% { transform: translateY(30px) skewY(-4deg); }
+            100% { left: 110%; transform: translateY(0) skewY(-4deg); }
+        }
+
+        /* Partículas de arena y polvo volando */
+        .particula-polvo {
+            position: absolute;
+            background-color: rgba(224, 185, 126, 0.6);
+            border-radius: 50%;
+            box-shadow: 0 0 4px rgba(224, 185, 126, 0.4);
+        }
+
+        /* Tamaños y velocidades variables para dar profundidad tridimensional */
+        .p1 { width: 3px; height: 3px; top: 15%; animation: soplarParticula 4s linear infinite; }
+        .p2 { width: 5px; height: 5px; top: 35%; animation: soplarParticula 6s linear infinite 1.2s; }
+        .p3 { width: 2px; height: 2px; top: 48%; animation: soplarParticula 3.5s linear infinite 0.5s; }
+        .p4 { width: 4px; height: 4px; top: 72%; animation: soplarParticula 5s linear infinite 2.2s; }
+        .p5 { width: 6px; height: 6px; top: 85%; animation: soplarParticula 7s linear infinite 1.8s; }
+        .p6 { width: 3px; height: 3px; top: 55%; animation: soplarParticula 4.5s linear infinite 2.8s; }
+
+        @keyframes soplarParticula {
+            0% { left: -50px; transform: translateY(0); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { left: 110%; transform: translateY(-40px); opacity: 0; }
+        }
+
+        /* 2. Arbusto Rodante (Tumbleweed) Realista */
+        .arbusto-rodante {
+            position: fixed;
+            bottom: 8%;
+            left: -120px;
+            width: 90px;
+            height: 90px;
+            pointer-events: none;
+            z-index: 160; /* Por encima de todo */
+            animation: rodarYRebotar 9s linear infinite;
+        }
+
+        /* Animación física de rodar y dar pequeños botes en el suelo */
+        @keyframes rodarYRebotar {
+            0% { left: -120px; transform: translateY(0) rotate(0deg); }
+            15% { transform: translateY(-45px) rotate(120deg); }
+            30% { transform: translateY(0) rotate(240deg); }
+            45% { transform: translateY(-35px) rotate(360deg); }
+            60% { transform: translateY(0) rotate(480deg); }
+            75% { transform: translateY(-25px) rotate(600deg); }
+            90% { transform: translateY(0) rotate(720deg); }
+            100% { left: 110%; transform: translateY(0) rotate(840deg); }
+        }
+        /* ---------------------------------------------------- */
+
+        #login-screen {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center;
+            align-items: center; z-index: 100;
+            background: #dcb67a;
+            background-image: radial-gradient(#c59b60 1px, transparent 1px);
+            background-size: 30px 30px;
+            transition: opacity 1s ease;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: #fdf5e6;
+            padding: 40px 20px;
+            border: 8px double #5d4037;
+            border-radius: 5px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            text-align: center;
+            width: 90%; max-width: 400px;
+        }
+
+        h2 { color: #5d4037; margin-bottom: 20px; font-size: 2rem; }
+
+        input { 
+            width: 100%; padding: 15px; margin-bottom: 20px;
+            border: 2px solid #5d4037; background: #fffaf0;
+            border-radius: 5px; font-family: 'Rye', cursive; text-align: center;
+        }
+
+        button { 
+            width: 100%; padding: 15px; background-color: #5d4037; 
+            color: #dcb67a; border: none; font-size: 1.2rem; cursor: pointer;
+            font-family: 'Rye', cursive; transition: transform 0.2s;
+        }
+        button:hover { background-color: #3e2723; transform: scale(1.02); }
+
+        #invitacion {
+            display: none; width: 100%; height: 100%;
+            overflow-y: scroll; scroll-snap-type: y mandatory;
+        }
+
+        .page {
+            width: 100%; height: 100%;
+            scroll-snap-align: start;
+            position: relative;
+            opacity: 0; transition: opacity 0.8s ease-in-out;
+        }
+
+        .page.visible { opacity: 1; }
+
+        .page img {
+            width: 100%; height: 100%;
+            object-fit: cover; /* Garantiza adaptación total */
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Capa de viento y partículas sobre las imágenes -->
+    <div class="viento-contenedor">
+        <!-- Ráfagas de viento principales -->
+        <div class="linea-viento v1"></div>
+        <div class="linea-viento v2"></div>
+        <div class="linea-viento v3"></div>
+
+        <!-- Partículas de polvo/arena -->
+        <div class="particula-polvo p1"></div>
+        <div class="particula-polvo p2"></div>
+        <div class="particula-polvo p3"></div>
+        <div class="particula-polvo p4"></div>
+        <div class="particula-polvo p5"></div>
+        <div class="particula-polvo p6"></div>
+    </div>
+
+    <!-- Arbusto rodante realista diseñado en SVG orgánico -->
+    <div class="arbusto-rodante">
+        <svg viewBox="0 0 100 100" width="100%" height="100%">
+            <!-- Nido caótico de ramas secas entrelazadas (Estilo Tumbleweed del desierto) -->
+            <path d="M50,50 C30,30 20,45 15,50 C10,55 25,75 50,85 C75,95 80,75 85,50 C90,25 70,15 50,50 Z" stroke="#5d4037" stroke-width="2" fill="none" stroke-linecap="round" />
+            <path d="M40,30 C15,20 10,60 30,70 C50,80 85,75 75,45 C65,15 30,20 40,30 Z" stroke="#4e3629" stroke-width="2.2" fill="none" stroke-linecap="round" />
+            
+            <!-- Curvas caóticas internas -->
+            <path d="M25,50 Q35,15 55,20 T75,45 T55,80 T25,50" stroke="#704214" stroke-width="1.8" fill="none" />
+            <path d="M40,15 Q75,25 65,55 T30,75 T25,40 T40,15" stroke="#8b5a2b" stroke-width="1.5" fill="none" />
+            <path d="M15,40 Q50,75 85,45" stroke="#4e3629" stroke-width="2" fill="none" />
+            <path d="M45,15 Q50,50 55,85" stroke="#5d4037" stroke-width="2" fill="none" />
+            
+            <!-- Órbitas irregulares para dar volumen -->
+            <path d="M35,35 C20,50 40,80 60,65 C80,50 60,20 35,35" stroke="#8b5a2b" stroke-width="1.5" fill="none" />
+            <path d="M65,35 C80,50 60,80 40,65 C20,50 40,20 65,35" stroke="#5d4037" stroke-width="1.5" fill="none" />
+
+            <!-- Ramitas desordenadas que sobresalen del arbusto (Aspecto espinoso) -->
+            <path d="M25,25 L12,12 M30,18 L18,8 M75,25 L88,12 M72,18 L82,6" stroke="#4e3629" stroke-width="2" stroke-linecap="round" />
+            <path d="M25,75 L12,88 M30,82 L18,92 M75,75 L88,88 M72,82 L82,94" stroke="#5d4037" stroke-width="2" stroke-linecap="round" />
+            <path d="M15,50 L3,52 M85,50 L97,48 M50,15 L48,2 M50,85 L52,98" stroke="#704214" stroke-width="2" stroke-linecap="round" />
+        </svg>
+    </div>
+
+    <div id="login-screen">
+        <div class="login-card">
+            <h2>¡Hola Vaquero!</h2>
+            <p>Escribe tu nombre para entrar al rancho:</p>
+            <input type="text" id="nombreUsuario" placeholder="Tu nombre...">
+            <button onclick="verificarNombre()">Ver Invitación</button>
+            <p id="error" style="color: #8b0000; margin-top: 10px; font-weight: bold;"></p>
+        </div>
+    </div>
+
+    <div id="invitacion">
+        <div class="page"><img src="https://github.com/regina1503/vania-1-baut/blob/main/KIREM.jpg?raw=true" alt="Pagina 1"></div>
+        <div class="page"><img src="https://github.com/regina1503/vania-1-baut/blob/main/KIREM%20(1).jpg?raw=true" alt="Pagina 2"></div>
+        <div class="page"><img src="https://github.com/regina1503/vania-1-baut/blob/main/KIREM%20(2).jpg?raw=true" alt="Pagina 3"></div>
+        <div class="page"><img src="https://github.com/regina1503/vania-1-baut/blob/main/KIREM%20(3).jpg?raw=true" alt="Pagina 4"></div>
+    </div>
+
+    <script>
+        const listaInvitados = ["regina ruiz", "maria lopez", "mario perez", "santiago casas"];
+
+        function verificarNombre() {
+            const input = document.getElementById("nombreUsuario").value.toLowerCase().trim();
+            const login = document.getElementById("login-screen");
+            const inv = document.getElementById("invitacion");
+
+            if (listaInvitados.includes(input)) {
+                login.style.opacity = "0";
+                setTimeout(() => {
+                    login.style.display = "none";
+                    inv.style.display = "block";
+                    setupObserver();
+                }, 1000);
+            } else {
+                document.getElementById("error").innerText = "¡Ups! Nombre no encontrado.";
+            }
+        }
+
+        function setupObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.page').forEach(page => observer.observe(page));
+        }
+    </script>
+</body>
+</html>
