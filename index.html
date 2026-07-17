@@ -2,83 +2,76 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación Vaquera</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Configuración para compartir en WhatsApp, Facebook y Redes Sociales (Open Graph) -->
+    <title>Mi bautizo y Primer año Kirem Gerardo 🤠</title>
+    <meta property="og:title" content="Mi bautizo y Primer año Kirem Gerardo 🤠">
+    <meta property="og:description" content="¡Estás invitado a celebrar conmigo este día tan especial en el rancho! Acompáñame a mi bautizo y primer año.">
+    <meta property="og:image" content="https://github.com/regina1503/Kirem-Gerardo/blob/main/portada%20Boda.jpg?raw=true">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mi bautizo y Primer año Kirem Gerardo 🤠">
+    <meta name="twitter:description" content="¡Estás invitado a celebrar conmigo este día tan especial en el rancho! Acompáñame a mi bautizo y primer año.">
+    <meta name="twitter:image" content="https://github.com/regina1503/Kirem-Gerardo/blob/main/portada%20Boda.jpg?raw=true">
+
+    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
         * { box-sizing: border-box; }
-        body, html { 
+        body, html {
             margin: 0; padding: 0; width: 100%; height: 100%;
-            background-color: #3e2723; /* Tono madera oscura */
+            background-color: #3e2723;
             font-family: 'Rye', cursive;
             overflow: hidden;
         }
 
-        /* --- ANIMACIONES DEL OESTE --- */
-
-        /* 1. Líneas de viento color arena */
+        /* --- STREAMING_CHUNK: Styling wind particles and tumbleweed animation... --- */
+        /* --- Viento y Polvo del Desierto --- */
         .viento-contenedor {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 150; /* Por encima de las imágenes */
-            overflow: hidden;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 150; overflow: hidden;
         }
-
         .linea-viento {
-            position: absolute;
-            height: 2px;
+            position: absolute; height: 2px;
             background: linear-gradient(90deg, transparent, rgba(220, 180, 130, 0.4), transparent);
-            width: 200px;
-            opacity: 0.8;
+            width: 200px; opacity: 0.8;
         }
-
         .v1 { top: 25%; animation: soplarViento 5s linear infinite; }
         .v2 { top: 60%; animation: soplarViento 7s linear infinite 1.5s; }
         .v3 { top: 80%; animation: soplarViento 6s linear infinite 3s; }
-
         @keyframes soplarViento {
             0% { left: -250px; transform: translateY(0) skewY(-4deg); }
             50% { transform: translateY(30px) skewY(-4deg); }
             100% { left: 110%; transform: translateY(0) skewY(-4deg); }
         }
-
-        /* Partículas de arena y polvo volando */
         .particula-polvo {
-            position: absolute;
-            background-color: rgba(224, 185, 126, 0.6);
-            border-radius: 50%;
-            box-shadow: 0 0 4px rgba(224, 185, 126, 0.4);
+            position: absolute; background-color: rgba(224, 185, 126, 0.6);
+            border-radius: 50%; box-shadow: 0 0 4px rgba(224, 185, 126, 0.4);
         }
-
-        /* Tamaños y velocidades variables para dar profundidad tridimensional */
         .p1 { width: 3px; height: 3px; top: 15%; animation: soplarParticula 4s linear infinite; }
         .p2 { width: 5px; height: 5px; top: 35%; animation: soplarParticula 6s linear infinite 1.2s; }
         .p3 { width: 2px; height: 2px; top: 48%; animation: soplarParticula 3.5s linear infinite 0.5s; }
         .p4 { width: 4px; height: 4px; top: 72%; animation: soplarParticula 5s linear infinite 2.2s; }
         .p5 { width: 6px; height: 6px; top: 85%; animation: soplarParticula 7s linear infinite 1.8s; }
         .p6 { width: 3px; height: 3px; top: 55%; animation: soplarParticula 4.5s linear infinite 2.8s; }
-
         @keyframes soplarParticula {
             0% { left: -50px; transform: translateY(0); opacity: 0; }
             10% { opacity: 0.8; }
             90% { opacity: 0.8; }
             100% { left: 110%; transform: translateY(-40px); opacity: 0; }
         }
-
-        /* 2. Arbusto Rodante (Tumbleweed) Realista */
+        
+        /* Arbusto Rodante */
         .arbusto-rodante {
-            position: fixed;
-            bottom: 8%;
-            left: -120px;
-            width: 90px;
-            height: 90px;
-            pointer-events: none;
-            z-index: 160; /* Por encima de todo */
-            animation: rodarYRebotar 9s linear infinite;
+            position: fixed; bottom: 8%; left: -120px; width: 90px; height: 90px;
+            pointer-events: none; z-index: 160; animation: rodarYRebotar 9s linear infinite;
         }
-
-        /* Animación física de rodar y dar pequeños botes en el suelo */
         @keyframes rodarYRebotar {
             0% { left: -120px; transform: translateY(0) rotate(0deg); }
             15% { transform: translateY(-45px) rotate(120deg); }
@@ -89,8 +82,9 @@
             90% { transform: translateY(0) rotate(720deg); }
             100% { left: 110%; transform: translateY(0) rotate(840deg); }
         }
-        /* ---------------------------------------------------- */
 
+        /* --- STREAMING_CHUNK: Styling the security login interface... --- */
+        /* SCREEN: LOGIN */
         #login-screen {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             display: flex; flex-direction: column; justify-content: center;
@@ -101,29 +95,29 @@
             transition: opacity 1s ease;
             padding: 20px;
         }
-
         .login-card {
-            background: #fdf5e6;
-            padding: 40px 20px;
-            border: 8px double #5d4037;
-            border-radius: 5px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            text-align: center;
-            width: 90%; max-width: 400px;
+            background: #fdf5e6; padding: 40px 20px; border: 8px double #5d4037;
+            border-radius: 5px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            text-align: center; width: 90%; max-width: 400px;
         }
-
         h2 { color: #5d4037; margin-bottom: 20px; font-size: 2rem; }
-
-        input { 
-            width: 100%; padding: 15px; margin-bottom: 20px;
+        input {
+            width: 100%; padding: 15px; margin-bottom: 12px;
             border: 2px solid #5d4037; background: #fffaf0;
             border-radius: 5px; font-family: 'Rye', cursive; text-align: center;
+            font-size: 1.1rem; color: #3e2723;
         }
-
-        button { 
-            width: 100%; padding: 15px; background-color: #5d4037; 
+        .sugerencia-busqueda {
+            min-height: 24px; margin-bottom: 15px; font-family: 'Dancing Script', cursive;
+            font-size: 1.35rem; color: #5d4037; cursor: pointer; transition: color 0.2s;
+            font-weight: bold; text-decoration: underline;
+        }
+        .sugerencia-busqueda:hover { color: #8b5a2b; }
+        button {
+            width: 100%; padding: 15px; background-color: #5d4037;
             color: #dcb67a; border: none; font-size: 1.2rem; cursor: pointer;
             font-family: 'Rye', cursive; transition: transform 0.2s;
+            border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
         button:hover { background-color: #3e2723; transform: scale(1.02); }
 
@@ -131,33 +125,470 @@
             display: none; width: 100%; height: 100%;
             overflow-y: scroll; scroll-snap-type: y mandatory;
         }
-
+        
+        /* --- STREAMING_CHUNK: Setting up sliding and page visibility properties... --- */
         .page {
             width: 100%; height: 100%;
             scroll-snap-align: start;
             position: relative;
-            opacity: 0; transition: opacity 0.8s ease-in-out;
+            opacity: 0; transition: opacity 1.2s ease-in-out;
+            overflow: hidden;
+        }
+        .page.visible { 
+            opacity: 1; 
         }
 
-        .page.visible { opacity: 1; }
-
-        .page img {
+        /* Efecto Zoom Suave en Fotos de Fondo */
+        .page img.bg-photo {
             width: 100%; height: 100%;
-            object-fit: cover; /* Garantiza adaptación total */
+            object-fit: cover;
             display: block;
+            transform: scale(1.08);
+            transition: transform 1.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .page.visible img.bg-photo {
+            transform: scale(1);
+        }
+
+        /* --- ANIMACIONES CONFIGURADAS --- */
+        
+        /* 1. Aparece poco a poco (Elegante y suave) */
+        .animate-soft-fade {
+            opacity: 0;
+            transition: opacity 1.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .page.visible .animate-soft-fade {
+            opacity: 1;
+        }
+
+        /* 2. Rebote elástico vaquero (Ideal para textos imponentes y botones) */
+        .animate-elastic-bounce {
+            opacity: 0;
+            transform: scale(0.6);
+            transition: opacity 1.3s cubic-bezier(0.34, 1.56, 0.64, 1), transform 1.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .page.visible .animate-elastic-bounce {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* 3. Desplazamiento desde abajo con rebote elástico final */
+        .animate-slide-bounce {
+            opacity: 0;
+            transform: translateY(35px) scale(0.95);
+            transition: opacity 1.4s cubic-bezier(0.34, 1.56, 0.64, 1), transform 1.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .page.visible .animate-slide-bounce {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* 4. Giro de Lazo/Estrella con entrada en rebote */
+        .animate-spin-in {
+            opacity: 0;
+            transform: scale(0.3) rotate(-75deg);
+            transition: opacity 1.4s cubic-bezier(0.34, 1.56, 0.64, 1), transform 1.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .page.visible .animate-spin-in {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        /* 5. Giro Centrado de la estrella del calendario para evitar que se descarrile de su posición */
+        .animate-spin-in-centered {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.3) rotate(-75deg);
+            transition: opacity 1.4s cubic-bezier(0.34, 1.56, 0.64, 1), transform 1.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .page.visible .animate-spin-in-centered {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1) rotate(-6deg);
+        }
+
+        /* Delays Escalonados */
+        .delay-1 { transition-delay: 0.15s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.45s; }
+        .delay-4 { transition-delay: 0.6s; }
+
+        #toggleMusica {
+            position: fixed; top: 15px; right: 15px; z-index: 200;
+            width: 44px; height: 44px; border-radius: 50%;
+            background: #5d4037; color: #dcb67a; border: 2px solid #dcb67a;
+            font-size: 1.2rem; display: none; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+
+        #page1 {
+            background-size: cover; background-position: center;
+            background-image: url('https://github.com/regina1503/Kirem-Gerardo/blob/main/KIREM%20(6).jpg?raw=true');
+        }
+        .contenido-pagina {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 20px; z-index: 5;
+        }
+        
+        .titulo-vaquero {
+            color: #5d4037; font-family: 'Rye', cursive; 
+            font-size: 3.9rem;
+            margin: 0; line-height: 1.1;
+            text-shadow: 2px 2px 0px #fff, -2px -2px 0px #fff, 2px -2px 0px #fff, -2px 2px 0px #fff, 0 0 10px rgba(255,255,255,0.9);
+            letter-spacing: 2px;
+        }
+        .subtitulo-cursiva {
+            color: #5d4037; font-family: 'Dancing Script', cursive; 
+            font-size: 2.47rem;
+            font-weight: 700; margin: 10px 0 15px 0;
+            text-shadow: 1px 1px 0px #fff, -1px -1px 0px #fff, 1px -1px 0px #fff, -1px 1px 0px #fff, 0 0 8px rgba(255,255,255,0.9);
+        }
+        
+        .img-decorativa-portada {
+            width: auto;
+            max-width: 95%;
+            max-height: 52.5vh;
+            object-fit: contain;
+            margin-top: 5px;
+            filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.3));
+        }
+
+        #page2 {
+            background-size: cover; background-position: center;
+            background-image: url('https://github.com/regina1503/Kirem-Gerardo/blob/main/KIREM%20(7).jpg?raw=true');
+        }
+
+        /* --- STREAMING_CHUNK: Formatting grid calendar design details... --- */
+        .fecha-vaquera {
+            color: #5d4037; font-family: 'Rye', cursive; font-size: 1.7rem;
+            text-align: center; 
+            margin: 0 0 25px 0;
+            padding: 0 10px;
+            text-shadow: 2px 2px 0px #fff, -2px -2px 0px #fff, 2px -2px 0px #fff, -2px 2px 0px #fff, 0 0 10px rgba(255,255,255,0.8);
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+        .fecha-ano {
+            display: block;
+            font-size: 1.4rem;
+            margin-top: 5px;
+        }
+        
+        .calendario-card {
+            background: #fdf5e6; border: 6px double #5d4037; border-radius: 8px;
+            padding: 14px; width: 88%; max-width: 300px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .calendario-mes {
+            font-family: 'Rye', cursive; color: #5d4037; text-align: center;
+            font-size: 1.1rem; margin-bottom: 8px;
+        }
+        .calendario-grid {
+            display: grid; grid-template-columns: repeat(7, 1fr);
+            gap: 4px; text-align: center;
+        }
+        .calendario-grid .dia-nombre {
+            font-family: 'Rye', cursive; color: #8b5a2b; font-size: 0.65rem;
+            padding-bottom: 4px;
+        }
+        .calendario-grid .dia {
+            font-family: 'Dancing Script', cursive; font-weight: 600;
+            color: #3e2723; font-size: 0.95rem; padding: 6px 0;
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .dia-marcado {
+            position: relative; 
+            color: #5d4037 !important;
+            font-weight: 900 !important;
+            font-size: 1.3rem !important;
+            z-index: 2;
+            display: inline-flex !important;
+            justify-content: center;
+            align-items: center;
+        }
+        .lazo-svg {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%) rotate(-6deg);
+            width: 38px; height: 38px; z-index: 1;
+            pointer-events: none;
+        }
+
+        .img-decorativa-medio {
+            width: auto;
+            max-width: 85%;
+            max-height: 21.6vh;
+            object-fit: contain;
+            margin: 15px 0;
+            filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.25));
+        }
+        
+        /* Cuenta Regresiva sin fondo y con lazos individuales */
+        .countdown-seccion {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 82%; 
+            max-width: 293px; 
+        }
+        .countdown-titulo-nuevo {
+            font-family: 'Rye', cursive;
+            color: #5d4037;
+            font-size: 2.35rem; 
+            letter-spacing: 2px;
+            margin: 0 0 12px 0;
+            font-weight: 900;
+            text-shadow: 2px 2px 0px #fff, -2px -2px 0px #fff, 2px -2px 0px #fff, -2px 2px 0px #fff, 0 0 10px rgba(255,255,255,0.8);
+        }
+        .countdown-grid-lazos {
+            display: flex;
+            justify-content: space-between;
+            width: 95%; 
+            gap: 3px; 
+        }
+        .countdown-unidad {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+        .lasso-unidad-contenedor {
+            position: relative;
+            width: 67px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .countdown-lazo-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .countdown-num-par {
+            font-family: 'Rye', cursive;
+            color: #5d4037;
+            font-size: 1.44rem;
+            font-weight: bold;
+            z-index: 2;
+            text-shadow: 1px 1px 0px #fff, -1px -1px 0px #fff, 1px -1px 0px #fff, -1px 1px 0px #fff;
+        }
+        .countdown-etiqueta-txt {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #3e2723;
+            margin-top: 5px;
+            text-align: center;
+            text-shadow: 1.5px 1.5px 0px #fff, -1.5px -1.5px 0px #fff, 1.5px -1.5px 0px #fff, -1.5px 1.5px 0px #fff, 0 0 6px rgba(255,255,255,0.9);
+        }
+
+        /* --- CONTENEDORES ESTÁTICOS PARA EVITAR DESPLAZAMIENTOS --- */
+        .centro-decorativo {
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+        .img-centro-p4 {
+            width: auto;
+            max-width: 80%;
+            max-height: 45vh;
+            filter: drop-shadow(0px 4px 12px rgba(0,0,0,0.5));
+        }
+
+        /* Página 6: Adorno */
+        .centro-decorativo-p6 {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+        .img-centro-p6 {
+            width: auto;
+            max-width: 80%;
+            max-height: 45vh;
+            filter: drop-shadow(0px 4px 12px rgba(0,0,0,0.5));
+        }
+
+        /* Página 7: Adorno */
+        .centro-decorativo-p7 {
+            position: absolute;
+            top: 68%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+        .img-centro-p7 {
+            width: auto;
+            max-width: 80%;
+            max-height: 45vh;
+            filter: drop-shadow(0px 4px 12px rgba(0,0,0,0.5));
+        }
+
+        /* Página 8: Adorno */
+        .centro-decorativo-p8 {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+        .img-centro-p8 {
+            width: auto;
+            max-width: 76%;
+            max-height: 42.75vh;
+            filter: drop-shadow(0px 4px 12px rgba(0,0,0,0.5));
+        }
+
+        /* Página 10: ¡No Faltes! */
+        #page10 {
+            background-size: cover; background-position: center;
+            background-image: url('https://github.com/regina1503/Kirem-Gerardo/blob/main/KIREM%20(6).jpg?raw=true');
+        }
+        #page10 .contenido-pagina {
+            justify-content: flex-start;
+            padding-top: 8vh; /* Subido un 25% para dar más aire y espacio arriba */
+        }
+        
+        .titulo-nofaltes {
+            color: #5d4037; font-family: 'Rye', cursive; 
+            font-size: 3.8rem;
+            text-align: center;
+            text-shadow: 2.5px 2.5px 0px #fff, -2.5px -2.5px 0px #fff, 2px -2.5px 0px #fff, -2.5px 2.5px 0px #fff, 0 0 15px rgba(255,255,255,0.9);
+            letter-spacing: 2px;
+            line-height: 1.1;
+            margin: 0;
+            animation: latidoVaquero 2.2s ease-in-out infinite;
+        }
+        @keyframes latidoVaquero {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+
+        /* Imagen decorativa debajo de ¡No Faltes! - Aumentada un 30% adicional y bajada un 20% */
+        .img-decorativa-nofaltes {
+            width: auto;
+            max-width: 98%;
+            max-height: 54.6vh;
+            object-fit: contain;
+            margin-top: 50px;
+            transform: translateY(20px);
+            filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.4));
+        }
+
+        /* --- STREAMING_CHUNK: Styling centered navigation buttons layout... --- */
+        /* Contenedores de botones flotantes de navegación con centrado absoluto de seguridad */
+        .contenedor-boton-final {
+            position: absolute;
+            bottom: 6%;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            pointer-events: none; /* Deja pasar clics excepto en el botón interior */
+        }
+        .btn-contenedor-animado {
+            width: 85%;
+            max-width: 280px;
+            pointer-events: auto; /* Permite interacción con el botón */
+            display: flex;
+            justify-content: center;
+        }
+        .btn-ubicacion {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px 24px;
+            background-color: #5d4037;
+            color: #dcb67a;
+            border: 2px solid #dcb67a;
+            border-radius: 30px;
+            font-family: 'Rye', cursive;
+            font-size: 1.05rem;
+            text-decoration: none;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+            transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+            letter-spacing: 1px;
+        }
+        .btn-ubicacion:hover {
+            background-color: #3e2723;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.8);
+        }
+
+        /* Ajustes específicos de ubicación de botones */
+        #page6 .contenedor-boton-final {
+            bottom: 10%;
+        }
+
+        /* --- Responsive styles --- */
+        @media (max-width: 480px) {
+            .titulo-vaquero { font-size: 3.38rem; }
+            .subtitulo-cursiva { font-size: 2.08rem; }
+            .fecha-vaquera { font-size: 1.45rem; margin-bottom: 20px; }
+            .calendario-card { padding: 10px; margin-top: 20px; margin-bottom: 20px; }
+            .calendario-grid .dia { padding: 4px 0; font-size: 0.85rem; }
+            .dia-marcado { font-size: 1.2rem !important; }
+            .img-decorativa-portada { max-height: 44vh; }
+            .img-decorativa-medio { max-height: 18vh; margin: 10px 0; }
+            .countdown-seccion { max-width: 293px; }
+            .countdown-titulo-nuevo { font-size: 2.07rem; }
+            .lasso-unidad-contenedor { width: 58px; height: 53px; }
+            .countdown-num-par { font-size: 1.26rem; }
+            .countdown-etiqueta-txt { font-size: 1.1rem; }
+            .titulo-nofaltes { font-size: 3.2rem; }
+            .img-decorativa-nofaltes { max-height: 32.5vh; margin-top: 35px; transform: translateY(15px); }
         }
     </style>
 </head>
 <body>
 
-    <!-- Capa de viento y partículas sobre las imágenes -->
+    <audio id="musicaFondo" loop preload="auto">
+        <source src="https://github.com/regina1503/Kirem-Gerardo/blob/main/Ilusi%C3%B3n%2098.mp3?raw=true" type="audio/mpeg">
+    </audio>
+    <button id="toggleMusica" onclick="alternarMusica()">🔊</button>
+
+    <!-- Partículas de ambiente vaquero -->
     <div class="viento-contenedor">
-        <!-- Ráfagas de viento principales -->
         <div class="linea-viento v1"></div>
         <div class="linea-viento v2"></div>
         <div class="linea-viento v3"></div>
-
-        <!-- Partículas de polvo/arena -->
         <div class="particula-polvo p1"></div>
         <div class="particula-polvo p2"></div>
         <div class="particula-polvo p3"></div>
@@ -166,24 +597,17 @@
         <div class="particula-polvo p6"></div>
     </div>
 
-    <!-- Arbusto rodante realista diseñado en SVG orgánico -->
+    <!-- Arbusto rodante interactivo -->
     <div class="arbusto-rodante">
         <svg viewBox="0 0 100 100" width="100%" height="100%">
-            <!-- Nido caótico de ramas secas entrelazadas (Estilo Tumbleweed del desierto) -->
             <path d="M50,50 C30,30 20,45 15,50 C10,55 25,75 50,85 C75,95 80,75 85,50 C90,25 70,15 50,50 Z" stroke="#5d4037" stroke-width="2" fill="none" stroke-linecap="round" />
             <path d="M40,30 C15,20 10,60 30,70 C50,80 85,75 75,45 C65,15 30,20 40,30 Z" stroke="#4e3629" stroke-width="2.2" fill="none" stroke-linecap="round" />
-            
-            <!-- Curvas caóticas internas -->
             <path d="M25,50 Q35,15 55,20 T75,45 T55,80 T25,50" stroke="#704214" stroke-width="1.8" fill="none" />
             <path d="M40,15 Q75,25 65,55 T30,75 T25,40 T40,15" stroke="#8b5a2b" stroke-width="1.5" fill="none" />
             <path d="M15,40 Q50,75 85,45" stroke="#4e3629" stroke-width="2" fill="none" />
             <path d="M45,15 Q50,50 55,85" stroke="#5d4037" stroke-width="2" fill="none" />
-            
-            <!-- Órbitas irregulares para dar volumen -->
             <path d="M35,35 C20,50 40,80 60,65 C80,50 60,20 35,35" stroke="#8b5a2b" stroke-width="1.5" fill="none" />
             <path d="M65,35 C80,50 60,80 40,65 C20,50 40,20 65,35" stroke="#5d4037" stroke-width="1.5" fill="none" />
-
-            <!-- Ramitas desordenadas que sobresalen del arbusto (Aspecto espinoso) -->
             <path d="M25,25 L12,12 M30,18 L18,8 M75,25 L88,12 M72,18 L82,6" stroke="#4e3629" stroke-width="2" stroke-linecap="round" />
             <path d="M25,75 L12,88 M30,82 L18,92 M75,75 L88,88 M72,82 L82,94" stroke="#5d4037" stroke-width="2" stroke-linecap="round" />
             <path d="M15,50 L3,52 M85,50 L97,48 M50,15 L48,2 M50,85 L52,98" stroke="#704214" stroke-width="2" stroke-linecap="round" />
@@ -193,29 +617,294 @@
     <div id="login-screen">
         <div class="login-card">
             <h2>¡Hola Vaquero!</h2>
-            <p>Escribe tu nombre para entrar al rancho:</p>
-            <input type="text" id="nombreUsuario" placeholder="Tu nombre...">
+            <p style="color: #5d4037; font-family: sans-serif; font-size: 0.95rem; margin-bottom: 15px;">Escribe tu nombre para entrar al rancho:</p>
+            <input type="text" id="nombreUsuario" placeholder="Tu nombre..." oninput="manejarSugerenciaYEscritura()">
+            <div id="sugerenciaUsuario" class="sugerencia-busqueda" onclick="aplicarSugerencia()"></div>
             <button onclick="verificarNombre()">Ver Invitación</button>
-            <p id="error" style="color: #8b0000; margin-top: 10px; font-weight: bold;"></p>
+            <p id="error" style="color: #8b0000; margin-top: 10px; font-weight: bold; font-family: sans-serif; font-size: 0.9rem;"></p>
         </div>
     </div>
 
+    <!-- --- STREAMING_CHUNK: Structuring page layouts... --- -->
     <div id="invitacion">
-        <div class="page"><img src="https://github.com/regina1503/vania-1-baut/blob/main/KIREM.jpg?raw=true" alt="Pagina 1"></div>
-        <div class="page"><img src="https://github.com/regina1503/vania-1-baut/blob/main/KIREM%20(1).jpg?raw=true" alt="Pagina 2"></div>
-        <div class="page"><img src="https://github.com/regina1503/vania-1-baut/blob/main/KIREM%20(2).jpg?raw=true" alt="Pagina 3"></div>
-        <div class="page"><img src="https://github.com/regina1503/vania-1-baut/blob/main/KIREM%20(3).jpg?raw=true" alt="Pagina 4"></div>
+        <!-- PÁGINA 1: PORTADA -->
+        <div class="page" id="page1">
+            <div class="contenido-pagina">
+                <h1 class="titulo-vaquero animate-elastic-bounce">Kirem</h1>
+                <h1 class="titulo-vaquero animate-elastic-bounce delay-1">Gerardo</h1>
+                <p class="subtitulo-cursiva animate-soft-fade delay-2">Mi primer año y bautizo</p>
+                <img class="img-decorativa-portada animate-spin-in delay-3" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/2da4676a711b6c47fd606b4e6d42e542.png?raw=true" alt="Detalle Vaquero Portada">
+            </div>
+        </div>
+
+        <!-- PÁGINA 2: CALENDARIO Y CUENTA REGRESIVA CON LAZOS -->
+        <div class="page" id="page2">
+            <div class="contenido-pagina">
+                <h2 class="fecha-vaquera animate-soft-fade">28 de Noviembre<span class="fecha-ano">2026</span></h2>
+                
+                <div class="calendario-card animate-slide-bounce delay-1">
+                    <div class="calendario-mes">Noviembre 2026</div>
+                    <div class="calendario-grid">
+                        <div class="dia-nombre">Dom</div>
+                        <div class="dia-nombre">Lun</div>
+                        <div class="dia-nombre">Mar</div>
+                        <div class="dia-nombre">Mié</div>
+                        <div class="dia-nombre">Jue</div>
+                        <div class="dia-nombre">Vie</div>
+                        <div class="dia-nombre">Sáb</div>
+
+                        <div class="dia">1</div><div class="dia">2</div><div class="dia">3</div><div class="dia">4</div><div class="dia">5</div><div class="dia">6</div><div class="dia">7</div>
+                        <div class="dia">8</div><div class="dia">9</div><div class="dia">10</div><div class="dia">11</div><div class="dia">12</div><div class="dia">13</div><div class="dia">14</div>
+                        <div class="dia">15</div><div class="dia">16</div><div class="dia">17</div><div class="dia">18</div><div class="dia">19</div><div class="dia">20</div><div class="dia">21</div>
+                        <div class="dia">22</div><div class="dia">23</div><div class="dia">24</div><div class="dia">25</div><div class="dia">26</div><div class="dia">27</div>
+                        <div class="dia dia-marcado">28
+                            <svg class="lazo-svg animate-spin-in-centered delay-2" viewBox="0 0 40 40">
+                                <ellipse cx="20" cy="20" rx="16" ry="13" fill="none" stroke="#8b5a2b" stroke-width="3" stroke-linecap="round"/>
+                                <path d="M20,7 C24,4 30,6 30,10" fill="none" stroke="#8b5a2b" stroke-width="3" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="dia">29</div><div class="dia">30</div>
+                    </div>
+                </div>
+
+                <img class="img-decorativa-medio animate-spin-in delay-2" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/d5ef69b1fa5bbcf3d8e97c7d18676218.png?raw=true" alt="Decoración Sheriff">
+
+                <!-- Rediseño del contador con lazos de sheriff independientes -->
+                <div class="countdown-seccion animate-slide-bounce delay-3">
+                    <h3 class="countdown-titulo-nuevo">FALTAN</h3>
+                    <div class="countdown-grid-lazos">
+                        
+                        <!-- UNIDAD: DÍAS -->
+                        <div class="countdown-unidad">
+                            <div class="lasso-unidad-contenedor">
+                                <svg class="countdown-lazo-svg animate-spin-in delay-3" viewBox="0 0 40 40">
+                                    <ellipse cx="20" cy="20" rx="16" ry="14" fill="none" stroke="#8b5a2b" stroke-width="2.5" stroke-linecap="round"/>
+                                    <path d="M20,6 C24,3 30,5 30,9" fill="none" stroke="#8b5a2b" stroke-width="2.5" stroke-linecap="round"/>
+                                </svg>
+                                <span class="countdown-num-par animate-soft-fade delay-4" id="count-dias">00</span>
+                            </div>
+                            <span class="countdown-etiqueta-txt animate-soft-fade delay-4">Días</span>
+                        </div>
+
+                        <!-- UNIDAD: HORAS -->
+                        <div class="countdown-unidad">
+                            <div class="lasso-unidad-contenedor">
+                                <svg class="countdown-lazo-svg animate-spin-in delay-3" viewBox="0 0 40 40">
+                                    <ellipse cx="20" cy="20" rx="16" ry="14" fill="none" stroke="#8b5a2b" stroke-width="2.5" stroke-linecap="round"/>
+                                    <path d="M20,6 C24,3 30,5 30,9" fill="none" stroke="#8b5a2b" stroke-width="2.5" stroke-linecap="round"/>
+                                </svg>
+                                <span class="countdown-num-par animate-soft-fade delay-4" id="count-horas">00</span>
+                            </div>
+                            <span class="countdown-etiqueta-txt animate-soft-fade delay-4">Horas</span>
+                        </div>
+
+                        <!-- UNIDAD: MINUTOS -->
+                        <div class="countdown-unidad">
+                            <div class="lasso-unidad-contenedor">
+                                <svg class="countdown-lazo-svg animate-spin-in delay-3" viewBox="0 0 40 40">
+                                    <ellipse cx="20" cy="20" rx="16" ry="14" fill="none" stroke="#8b5a2b" stroke-width="2.5" stroke-linecap="round"/>
+                                    <path d="M20,6 C24,3 30,5 30,9" fill="none" stroke="#8b5a2b" stroke-width="2.5" stroke-linecap="round"/>
+                                </svg>
+                                <span class="countdown-num-par animate-soft-fade delay-4" id="count-minutos">00</span>
+                            </div>
+                            <span class="countdown-etiqueta-txt animate-soft-fade delay-4">Mins</span>
+                        </div>
+
+                        <!-- UNIDAD: SEGUNDOS -->
+                        <div class="countdown-unidad">
+                            <div class="lasso-unidad-contenedor">
+                                <svg class="countdown-lazo-svg animate-spin-in delay-3" viewBox="0 0 40 40">
+                                    <ellipse cx="20" cy="20" rx="16" ry="14" fill="none" stroke="#8b5a2b" stroke-width="2.5" stroke-linecap="round"/>
+                                    <path d="M20,6 C24,3 30,5 30,9" fill="none" stroke="#8b5a2b" stroke-width="2.5" stroke-linecap="round"/>
+                                </svg>
+                                <span class="countdown-num-par animate-soft-fade delay-4" id="count-segundos">00</span>
+                            </div>
+                            <span class="countdown-etiqueta-txt animate-soft-fade delay-4">Segs</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: FOTO DETALLE -->
+        <div class="page"><img class="bg-photo" src="https://github.com/regina1503/vania-1-baut/blob/main/KIREM%20(1).jpg?raw=true" alt="Pagina 3"></div>
+        
+        <!-- PÁGINA 4: FOTO CON ADORNO AL 65% -->
+        <div class="page" id="page4">
+            <img class="bg-photo" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/KIREM%20(8).jpg?raw=true" alt="Pagina 4">
+            <div class="centro-decorativo">
+                <img class="img-centro-p4 animate-spin-in delay-1" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/4e97139c4f659d4d5a496af30cfa801b.png?raw=true" alt="Decoración Central Página 4">
+            </div>
+        </div>
+
+        <!-- PÁGINA 5: UBICACIÓN Y BOTÓN -->
+        <div class="page" id="page5">
+            <img class="bg-photo" src="https://github.com/regina1503/vania-1-baut/blob/main/KIREM%20(3).jpg?raw=true" alt="Pagina 5">
+            <div class="contenedor-boton-final">
+                <div class="btn-contenedor-animado animate-elastic-bounce delay-1">
+                    <a href="https://maps.google.com" target="_blank" class="btn-ubicacion">
+                        📍 VER UBICACIÓN
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 6: FOTO VAQUERA CON ADORNO Y BOTÓN DE UBICACIÓN SUBIDO -->
+        <div class="page" id="page6">
+            <img class="bg-photo" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/KIREM%20(9).jpg?raw=true" alt="Pagina 6">
+            <div class="centro-decorativo-p6">
+                <img class="img-centro-p6 animate-spin-in delay-1" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/84351839317e937a3d6c361297a7c0bd.png?raw=true" alt="Decoración Central Página 6">
+            </div>
+            <div class="contenedor-boton-final">
+                <div class="btn-contenedor-animado animate-elastic-bounce delay-2">
+                    <a href="https://maps.google.com" target="_blank" class="btn-ubicacion">
+                        📍 VER UBICACIÓN
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 7: FOTO CON DECORACIÓN AL 68% -->
+        <div class="page" id="page7">
+            <img class="bg-photo" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/KIREM%20(10).jpg?raw=true" alt="Pagina 7">
+            <div class="centro-decorativo-p7">
+                <img class="img-centro-p7 animate-spin-in delay-1" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/4c77f852924c95275dc363caa4ae5f5c-Photoroom.png?raw=true" alt="Decoración Página 7">
+            </div>
+        </div>
+
+        <!-- PÁGINA 8: NUEVA PÁGINA DE FONDO CON ADORNO Y MESA DE REGALOS -->
+        <div class="page" id="page8">
+            <img class="bg-photo" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/KIREM%20(11).jpg?raw=true" alt="Pagina 8">
+            <div class="centro-decorativo-p8">
+                <img class="img-centro-p8 animate-spin-in delay-1" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/c75e8ea602f115c788c4919351e79d88-Photoroom.png?raw=true" alt="Decoración Página 8">
+            </div>
+            <div class="contenedor-boton-final">
+                <div class="btn-contenedor-animado animate-elastic-bounce delay-2">
+                    <a href="#" target="_blank" class="btn-ubicacion">
+                        🎁 MESA DE REGALOS
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 9: NUEVA FOTO DE FONDO CON CONFIRMACIÓN DE ASISTENCIA -->
+        <div class="page" id="page9">
+            <img class="bg-photo" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/KIREM%20(12).jpg?raw=true" alt="Pagina 9">
+            <div class="contenedor-boton-final">
+                <div class="btn-contenedor-animado animate-elastic-bounce delay-1">
+                    <a href="https://regina1503.github.io/confrimaciones/" target="_blank" class="btn-ubicacion">
+                        📩 CONFIRMAR ASISTENCIA
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 10: ¡NO FALTES! -->
+        <div class="page" id="page10">
+            <div class="contenido-pagina">
+                <h1 class="titulo-nofaltes animate-elastic-bounce">¡No</h1>
+                <h1 class="titulo-nofaltes animate-elastic-bounce delay-1">Faltes!</h1>
+                <img class="img-decorativa-nofaltes animate-spin-in delay-2" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/8a95432e88b70f1d4eba1cc425b2c0ba.png?raw=true" alt="Detalle Adorno No Faltes">
+            </div>
+        </div>
     </div>
 
+    <!-- --- STREAMING_CHUNK: Setting up user interface scripts and lists... --- -->
     <script>
-        const listaInvitados = ["regina ruiz", "maria lopez", "mario perez", "santiago casas"];
+        const listaInvitados = [
+            "mirella arias", "jorge ortega", "mary salcedo", "eduardo camacho",
+            "geraldine camacho", "vanessa patiño", "aaron garcía", "ana arias",
+            "rosa rodríguez", "alejandro servín", "norma juárez", "beatriz lecona",
+            "alejandra santillán", "chuy arias", "vania montalvo", "diana ortega",
+            "judith", "edgar patiño", "janette patiño", "humberto servín",
+            "martín arias", "juana caballero", "estefani arias", "yamilet",
+            "karolina rosales", "maría arias", "antonio patiño", "alejandra yemaya",
+            "alejandra méndez", "miris epitacio", "mónica lozano", "mónica sánchez",
+            "anayeli ruiz", "paz", "alberto abab", "arturo hernandez",
+            "dulce basilio", "ivan rupit", "israel guzmán", "steven márquez",
+            "francisco martínez", "guadalupe", "paula zamacona", "reyna navarrete",
+            "verónica luna", "tania pescador", "ana lilia", "brenda bautista"
+        ];
+
+        let sugerenciaActiva = "";
+
+        function normalizar(texto) {
+            return texto.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        }
+
+        const listaNormalizada = listaInvitados.map(normalizar);
+
+        const musica = document.getElementById("musicaFondo");
+        
+        // Autoplay robusto respetando políticas de navegadores
+        function intentarAutoplay() {
+            musica.volume = 0.6;
+            const playPromise = musica.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    document.getElementById("toggleMusica").style.display = "flex";
+                }).catch(() => {
+                    // Fallback: reproducir al primer clic o tap en la pantalla
+                    const reproducirAlInteractuar = () => {
+                        musica.play().then(() => {
+                            document.getElementById("toggleMusica").style.display = "flex";
+                        });
+                        window.removeEventListener('click', reproducirAlInteractuar);
+                        window.removeEventListener('touchstart', reproducirAlInteractuar);
+                    };
+                    window.addEventListener('click', reproducirAlInteractuar);
+                    window.addEventListener('touchstart', reproducirAlInteractuar);
+                });
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', intentarAutoplay);
+
+        // Buscar sugerencias inteligentes a partir de la sexta letra (6 caracteres o más)
+        function manejarSugerenciaYEscritura() {
+            const inputVal = document.getElementById("nombreUsuario").value;
+            const inputNorm = normalizar(inputVal);
+            const sugContainer = document.getElementById("sugerenciaUsuario");
+            document.getElementById("error").innerText = "";
+
+            if (inputNorm.length >= 6) {
+                const coincidencia = listaInvitados.find(invitado => 
+                    normalizar(invitado).includes(inputNorm)
+                );
+
+                if (coincidencia) {
+                    sugerenciaActiva = coincidencia;
+                    sugContainer.innerHTML = `¿Eres <strong style="text-transform: capitalize;">${coincidencia}</strong>? Haz clic aquí`;
+                } else {
+                    sugerenciaActiva = "";
+                    sugContainer.innerHTML = "";
+                }
+            } else {
+                sugerenciaActiva = "";
+                sugContainer.innerHTML = "";
+            }
+        }
+
+        function aplicarSugerencia() {
+            if (sugerenciaActiva) {
+                document.getElementById("nombreUsuario").value = sugerenciaActiva;
+                document.getElementById("sugerenciaUsuario").innerHTML = "";
+                verificarNombre();
+            }
+        }
 
         function verificarNombre() {
-            const input = document.getElementById("nombreUsuario").value.toLowerCase().trim();
+            const inputRaw = document.getElementById("nombreUsuario").value;
+            const input = normalizar(inputRaw);
             const login = document.getElementById("login-screen");
             const inv = document.getElementById("invitacion");
 
-            if (listaInvitados.includes(input)) {
+            if (listaNormalizada.includes(input)) {
+                musica.volume = 0.6;
+                musica.play().catch(() => {});
+                document.getElementById("toggleMusica").style.display = "flex";
+
                 login.style.opacity = "0";
                 setTimeout(() => {
                     login.style.display = "none";
@@ -223,21 +912,79 @@
                     setupObserver();
                 }, 1000);
             } else {
-                document.getElementById("error").innerText = "¡Ups! Nombre no encontrado.";
+                document.getElementById("error").innerText = "¡Ups! Nombre no encontrado en la lista.";
             }
         }
 
+        function alternarMusica() {
+            const btn = document.getElementById("toggleMusica");
+            if (musica.paused) {
+                musica.play();
+                btn.innerText = "🔊";
+            } else {
+                musica.pause();
+                btn.innerText = "🔇";
+            }
+        }
+
+        // Observer con threshold calibrado para suavidad en celulares
         function setupObserver() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible');
                     }
                 });
-            }, { threshold: 0.5 });
+            }, { threshold: 0.15 });
 
             document.querySelectorAll('.page').forEach(page => observer.observe(page));
         }
+
+        // Cuenta regresiva en vivo hacia el 28 de Noviembre de 2026
+        function iniciarCuentaRegresiva() {
+            const fechaEvento = new Date("November 28, 2026 00:00:00").getTime();
+            
+            const diasEl = document.getElementById("count-dias");
+            const horasEl = document.getElementById("count-horas");
+            const minutosEl = document.getElementById("count-minutos");
+            const segundosEl = document.getElementById("count-segundos");
+
+            function actualizarContador() {
+                const ahora = new Date().getTime();
+                const distancia = fechaEvento - ScientificTimeWorkaround(ahora);
+
+                if (distancia < 0) {
+                    diasEl.innerText = "00";
+                    horasEl.innerText = "00";
+                    minutosEl.innerText = "00";
+                    segundosEl.innerText = "00";
+                    clearInterval(intervaloRegresivo);
+                    return;
+                }
+
+                const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+                const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+                // Formatear a dos dígitos
+                diasEl.innerText = String(dias).padStart(2, '0');
+                horasEl.innerText = String(horas).padStart(2, '0');
+                minutosEl.innerText = String(minutos).padStart(2, '0');
+                segundosEl.innerText = String(segundos).padStart(2, '0');
+            }
+
+            function ScientificTimeWorkaround(t) {
+                return t;
+            }
+
+            actualizarContador();
+            const intervaloRegresivo = setInterval(actualizarContador, 1000);
+        }
+
+        iniciarCuentaRegresiva();
     </script>
 </body>
 </html>
