@@ -124,6 +124,7 @@
         #invitacion {
             display: none; width: 100%; height: 100%;
             overflow-y: scroll; scroll-snap-type: y mandatory;
+            -webkit-overflow-scrolling: touch; /* Activa el desplazamiento táctil suave de inercia específico para iOS Safari */
         }
         
         /* --- STREAMING_CHUNK: Setting up sliding and page visibility properties... --- */
@@ -222,6 +223,8 @@
         #page1 {
             background-size: cover; background-position: center;
             background-image: url('https://github.com/regina1503/Kirem-Gerardo/blob/main/KIREM%20(6).jpg?raw=true');
+            opacity: 1 !important;
+            transition: none !important;
         }
         .contenido-pagina {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -641,10 +644,10 @@
         <!-- PÁGINA 1: PORTADA -->
         <div class="page" id="page1">
             <div class="contenido-pagina">
-                <h1 class="titulo-vaquero animate-elastic-bounce">Kirem</h1>
-                <h1 class="titulo-vaquero animate-elastic-bounce delay-1">Gerardo</h1>
-                <p class="subtitulo-cursiva animate-soft-fade delay-2">Mi primer año y bautizo</p>
-                <img class="img-decorativa-portada animate-spin-in delay-3" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/2da4676a711b6c47fd606b4e6d42e542.png?raw=true" alt="Detalle Vaquero Portada">
+                <h1 class="titulo-vaquero">Kirem</h1>
+                <h1 class="titulo-vaquero">Gerardo</h1>
+                <p class="subtitulo-cursiva">Mi primer año y bautizo</p>
+                <img class="img-decorativa-portada" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/2da4676a711b6c47fd606b4e6d42e542.png?raw=true" alt="Detalle Vaquero Portada">
             </div>
         </div>
 
@@ -813,7 +816,7 @@
             <img class="bg-photo" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/KIREM%20(12).jpg?raw=true" alt="Pagina 9">
             <div class="contenedor-boton-final">
                 <div class="btn-contenedor-animado animate-elastic-bounce delay-1">
-                    <!-- Botón con sobrecito SVG y texto perfectamente centrados y alineados -->
+                    <!-- Botón con sobrecito SVG y texto perfectamente centrados y alinedados -->
                     <a href="https://regina1503.github.io/confrimaciones/" target="_blank" class="btn-ubicacion" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16" style="flex-shrink: 0; display: inline-block;">
                             <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm5.436-.593L18 11.801V4.697z"/>
@@ -860,30 +863,6 @@
         const listaNormalizada = listaInvitados.map(normalizar);
 
         const musica = document.getElementById("musicaFondo");
-        
-        // Autoplay robusto respetando políticas de navegadores
-        function intentarAutoplay() {
-            musica.volume = 0.6;
-            const playPromise = musica.play();
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    document.getElementById("toggleMusica").style.display = "flex";
-                }).catch(() => {
-                    // Fallback: reproducir al primer clic o tap en la pantalla
-                    const reproducirAlInteractuar = () => {
-                        musica.play().then(() => {
-                            document.getElementById("toggleMusica").style.display = "flex";
-                        });
-                        window.removeEventListener('click', reproducirAlInteractuar);
-                        window.removeEventListener('touchstart', reproducirAlInteractuar);
-                    };
-                    window.addEventListener('click', reproducirAlInteractuar);
-                    window.addEventListener('touchstart', reproducirAlInteractuar);
-                });
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', intentarAutoplay);
 
         // Buscar sugerencias inteligentes a partir de la sexta letra (6 caracteres o más)
         function manejarSugerenciaYEscritura() {
@@ -925,6 +904,7 @@
             const inv = document.getElementById("invitacion");
 
             if (listaNormalizada.includes(input)) {
+                // La música se inicia exactamente al abrir la invitación tras validar el acceso
                 musica.volume = 0.6;
                 musica.play().catch(() => {});
                 document.getElementById("toggleMusica").style.display = "flex";
@@ -943,7 +923,7 @@
         function alternarMusica() {
             const btn = document.getElementById("toggleMusica");
             if (musica.paused) {
-                musica.play();
+                musica.play().catch(() => {});
                 btn.innerText = "🔊";
             } else {
                 musica.pause();
@@ -966,9 +946,10 @@
             document.querySelectorAll('.page').forEach(page => observer.observe(page));
         }
 
-        // Cuenta regresiva en vivo hacia el 28 de Noviembre de 2026
+        // Cuenta regresiva compatible con Safari (Usando constructores numéricos puros de fecha para evitar NaN)
         function iniciarCuentaRegresiva() {
-            const fechaEvento = new Date("November 28, 2026 00:00:00").getTime();
+            // Noviembre es el mes index 10 (Enero=0, Noviembre=10)
+            const fechaEvento = new Date(2026, 10, 28, 0, 0, 0).getTime();
             
             const diasEl = document.getElementById("count-dias");
             const horasEl = document.getElementById("count-horas");
@@ -977,9 +958,9 @@
 
             function actualizarContador() {
                 const ahora = new Date().getTime();
-                const distancia = fechaEvento - ScientificTimeWorkaround(ahora);
+                const distancia = fechaEvento - ahora;
 
-                if (distancia < 0) {
+                if (isNaN(distancia) || distancia < 0) {
                     diasEl.innerText = "00";
                     horasEl.innerText = "00";
                     minutosEl.innerText = "00";
@@ -993,15 +974,11 @@
                 const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
                 const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-                // Formatear a dos dígitos
+                // Formatear a dos dígitos de forma segura
                 diasEl.innerText = String(dias).padStart(2, '0');
                 horasEl.innerText = String(horas).padStart(2, '0');
                 minutosEl.innerText = String(minutos).padStart(2, '0');
                 segundosEl.innerText = String(segundos).padStart(2, '0');
-            }
-
-            function ScientificTimeWorkaround(t) {
-                return t;
             }
 
             actualizarContador();
