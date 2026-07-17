@@ -266,11 +266,21 @@
             text-shadow: 2px 2px 0px #fff, -2px -2px 0px #fff, 2px -2px 0px #fff, -2px 2px 0px #fff, 0 0 10px rgba(255,255,255,0.8);
             letter-spacing: 1px;
             line-height: 1.2;
+            transform: translateY(12px); /* Bajada un 3% extra */
         }
-        .fecha-ano {
-            display: block;
-            font-size: 1.4rem;
-            margin-top: 5px;
+        
+        .fecha-grid-punteada {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .separador-punteado {
+            display: inline-block;
+            width: 0;
+            height: 1.7rem;
+            border-left: 3px dotted #5d4037;
+            margin: 0 4px;
         }
         
         .calendario-card {
@@ -395,7 +405,7 @@
         /* --- CONTENEDORES ESTÁTICOS PARA EVITAR DESPLAZAMIENTOS --- */
         .centro-decorativo {
             position: absolute;
-            top: 65%;
+            top: 69%; /* Bajado un 4% (antes 65%) */
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 10;
@@ -467,8 +477,8 @@
         }
         .img-centro-p8 {
             width: auto;
-            max-width: 76%;
-            max-height: 42.75vh;
+            max-width: 72%; /* Reducida un 5% (antes 76%) */
+            max-height: 40.5vh; /* Reducida un 5% (antes 42.75vh) */
             filter: drop-shadow(0px 4px 12px rgba(0,0,0,0.5));
         }
 
@@ -497,14 +507,14 @@
             50% { transform: scale(1.04); }
         }
 
-        /* Imagen decorativa debajo de ¡No Faltes! - Aumentada un 30% adicional y bajada un 20% */
+        /* Imagen decorativa debajo de ¡No Faltes! - Aumentada un 20% en tamaño y bajada un 15% más */
         .img-decorativa-nofaltes {
             width: auto;
             max-width: 98%;
-            max-height: 54.6vh;
+            max-height: 65.5vh; /* Aumentada 20% (antes 54.6vh) */
             object-fit: contain;
             margin-top: 50px;
-            transform: translateY(20px);
+            transform: translateY(65px); /* Bajada un 15% más (antes 20px) */
             filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.4));
         }
 
@@ -545,6 +555,7 @@
             box-shadow: 0 6px 15px rgba(0,0,0,0.6);
             transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
             letter-spacing: 1px;
+            text-align: center;
         }
         .btn-ubicacion:hover {
             background-color: #3e2723;
@@ -573,7 +584,7 @@
             .countdown-num-par { font-size: 1.26rem; }
             .countdown-etiqueta-txt { font-size: 1.1rem; }
             .titulo-nofaltes { font-size: 3.2rem; }
-            .img-decorativa-nofaltes { max-height: 32.5vh; margin-top: 35px; transform: translateY(15px); }
+            .img-decorativa-nofaltes { max-height: 39vh; margin-top: 35px; transform: translateY(45px); } /* Ajuste responsivo de la imagen final */
         }
     </style>
 </head>
@@ -640,7 +651,16 @@
         <!-- PÁGINA 2: CALENDARIO Y CUENTA REGRESIVA CON LAZOS -->
         <div class="page" id="page2">
             <div class="contenido-pagina">
-                <h2 class="fecha-vaquera animate-soft-fade">28 de Noviembre<span class="fecha-ano">2026</span></h2>
+                <!-- Fecha rediseñada con separadores de línea recta punteada -->
+                <h2 class="fecha-vaquera animate-soft-fade">
+                    <span class="fecha-grid-punteada">
+                        <span>28</span>
+                        <span class="separador-punteado"></span>
+                        <span>NOV</span>
+                        <span class="separador-punteado"></span>
+                        <span>26</span>
+                    </span>
+                </h2>
                 
                 <div class="calendario-card animate-slide-bounce delay-1">
                     <div class="calendario-mes">Noviembre 2026</div>
@@ -730,7 +750,7 @@
         <!-- PÁGINA 3: FOTO DETALLE -->
         <div class="page"><img class="bg-photo" src="https://github.com/regina1503/vania-1-baut/blob/main/KIREM%20(1).jpg?raw=true" alt="Pagina 3"></div>
         
-        <!-- PÁGINA 4: FOTO CON ADORNO AL 65% -->
+        <!-- PÁGINA 4: FOTO CON ADORNO AL 69% -->
         <div class="page" id="page4">
             <img class="bg-photo" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/KIREM%20(8).jpg?raw=true" alt="Pagina 4">
             <div class="centro-decorativo">
@@ -793,8 +813,12 @@
             <img class="bg-photo" src="https://github.com/regina1503/Kirem-Gerardo/blob/main/KIREM%20(12).jpg?raw=true" alt="Pagina 9">
             <div class="contenedor-boton-final">
                 <div class="btn-contenedor-animado animate-elastic-bounce delay-1">
-                    <a href="https://regina1503.github.io/confrimaciones/" target="_blank" class="btn-ubicacion">
-                        📩 CONFIRMAR ASISTENCIA
+                    <!-- Botón con sobrecito SVG y texto perfectamente centrados y alineados -->
+                    <a href="https://regina1503.github.io/confrimaciones/" target="_blank" class="btn-ubicacion" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16" style="flex-shrink: 0; display: inline-block;">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm5.436-.593L18 11.801V4.697z"/>
+                        </svg>
+                        <span>CONFIRMAR ASISTENCIA</span>
                     </a>
                 </div>
             </div>
